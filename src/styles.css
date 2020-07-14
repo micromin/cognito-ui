@@ -1,0 +1,16 @@
+main {
+    margin-top: 70px;
+}
+.centered-form {
+    width: 100%;
+    max-width: 430px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.error-feedback {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #dc3545;
+}

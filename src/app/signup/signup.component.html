@@ -1,0 +1,54 @@
+<form novalidate [formGroup]="signupForm" class="centered-form" (ngSubmit)="onSubmit()">
+  <h1 class="h3 mb-3 font-weight-normal">Please enter your account info to get started.</h1>
+  <div *ngIf="error" class="alert alert-danger" role="alert">
+    {{error}}
+  </div>
+  <div class="form-group">
+    <label for="email">Full name</label>
+    <input type="text" class="form-control" formControlName="name" id="name" placeholder="John Doe" minlength="3"
+      required>
+    <div class="error-feedback">
+      <div *ngIf="f.name.touched && f.name.hasError('required')"> please enter your name</div>
+      <div *ngIf="f.name.touched && f.name.hasError('minlength')">name should be more than 3 characters</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" formControlName="email" id="email" placeholder="name@example.com" required>
+    <div class="error-feedback">
+      <div *ngIf="f.email.touched && f.email.hasError('email')"> please enter a valid email</div>
+      <div *ngIf="f.email.touched && f.email.hasError('required')">please enter your email</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" formControlName="password" id="password" required minlength="8"
+      placeholder="enter password">
+    <div class="error-feedback">
+      <div *ngIf="f.password.touched && f.password.hasError('minlength')"> min required length for password is 8
+        characters</div>
+      <div *ngIf="f.password.touched && f.password.hasError('required')">please enter a password</div>
+    </div>
+  </div>
+  <div class="form-check mb-3">
+    <input type="checkbox" class="form-check-input" formControlName="terms" id="terms">
+    <label class="form-check-label" for="terms">I agree with service <a href="/terms">privacy/terms</a></label>
+    <div class="error-feedback">
+      <div *ngIf="f.terms.touched && f.terms.hasError('pattern')">you need to agree to our terms to use the service
+      </div>
+    </div>
+  </div>
+  <button *ngIf="!submitting" [disabled]="!this.signupForm.valid" class="btn btn-lg btn-primary btn-block"
+    type="submit">Sign up
+  </button>
+  <button *ngIf="submitting" class="btn btn-lg btn-primary btn-block" type="button" disabled>
+    <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+    Signing up...
+  </button>
+  <p class="mt-5">
+    <a routerLink="/forgot-password">Forgot your password? reset it.</a>
+  </p>
+  <p>
+    <a routerLink="/login">Already have an account? login.</a>
+  </p>
+</form>
