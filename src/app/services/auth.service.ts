@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { StorageService } from './storage.service';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService { 
-  baseURL: string = "http://localhost:8000/api/";
+  baseURL: string = environment.apiUrl;
   public isLoggedIn = new Subject();;
 
   constructor(private http: HttpClient, private storageService: StorageService, private router: Router) { }
